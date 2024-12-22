@@ -20,9 +20,6 @@ function ShoppingCart() {
                     <FirstRowContainShoppingCart/>
                     <TopTotalBox/>
                     <TotalBox/>
-
-
-
                     <FinalRowContainShoppingCart/> 
                 </div>
             </div>

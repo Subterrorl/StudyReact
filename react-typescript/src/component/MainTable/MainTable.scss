@@ -30,6 +30,8 @@
 
   .button-edit{
     color: #9e276e;
+    border-style: solid;
+    border-width: 1px;
     border-radius: 8px;
     border-color: #9e276e;
     background-color: #f2cfee;
@@ -37,9 +39,13 @@
     height: 30px;
     margin-right: 10px;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
   }
   .button-buy{
     color: #9e276e;
+    border-style: solid;
+    border-width: 1px;
     border-radius: 8px;
     border-color: #9e276e;
     background-color: #f2cfee;
@@ -47,6 +53,8 @@
     height: 30px;
     margin-right: 10px;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
   }
   button:hover{
     background-color: #c0a9be;

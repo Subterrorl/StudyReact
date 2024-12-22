@@ -1,20 +1,14 @@
 import "./EnterBoxAddNewPhone.scss";
-import { useState } from 'react';
-
+import { useLocation } from "react-router-dom";
 
 
 function EnterBoxAddNewPhone() {
 
-    const [title, setTitle] = useState('');
-    const [price, setPrice] = useState('');
 
-    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
-    };
 
-    const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(event.target.value);
-    };
+    const location = useLocation();
+    const { title, price } = location.state || {}; // รับข้อมูลจาก state ที่ส่งมา
+
 
     return (
     <div className="box-large-page2">
@@ -25,7 +19,6 @@ function EnterBoxAddNewPhone() {
                 className="input-box"
                 id="title"
                 value={title}
-                onChange={handleTitleChange}
                 placeholder="Enter phone name"
                 />
         </div>
@@ -36,7 +29,6 @@ function EnterBoxAddNewPhone() {
                 className="input-box"
                 id="price"
                 value={price}
-                onChange={handlePriceChange}
                 placeholder="Enter phone price"
                 />
         </div>

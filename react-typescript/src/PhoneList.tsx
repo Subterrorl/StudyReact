@@ -6,6 +6,7 @@ import BoxMedium from './component/BoxMedium/BoxMedium';
 import MainTable from './component/MainTable/MainTable';
 import FinalRowContain from './component/FinalRowContain/FinalRowContain';
 
+
 function App() {
   return (
     <div className="flex-container">
