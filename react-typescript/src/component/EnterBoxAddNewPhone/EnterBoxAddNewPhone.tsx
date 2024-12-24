@@ -1,14 +1,18 @@
 import "./EnterBoxAddNewPhone.scss";
 import { useLocation } from "react-router-dom";
-
+import { usePhoneContext } from "../../PhoneContext";
 
 function EnterBoxAddNewPhone() {
 
+    const { phoneData, setPhoneData } = usePhoneContext(); // ดึงทั้ง phoneData และ setPhoneData จาก Context
 
-
-    const location = useLocation();
-    const { title, price } = location.state || {}; // รับข้อมูลจาก state ที่ส่งมา
-
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { id, value } = e.target; // ดึง id และ value จาก input
+        setPhoneData((prevData) => ({
+            ...prevData,
+            [id]: value, // อัปเดตค่าที่ตรงกับ id ของ input
+          }));
+    };
 
     return (
     <div className="box-large-page2">
@@ -18,7 +22,8 @@ function EnterBoxAddNewPhone() {
                 type="text"
                 className="input-box"
                 id="title"
-                value={title}
+                value={phoneData?.title || ""} // แสดงค่าจาก Context
+                onChange={handleInputChange} // อัปเดตค่าเมื่อพิมพ์
                 placeholder="Enter phone name"
                 />
         </div>
@@ -28,7 +33,8 @@ function EnterBoxAddNewPhone() {
                 type="text"
                 className="input-box"
                 id="price"
-                value={price}
+                
+                onChange={handleInputChange}
                 placeholder="Enter phone price"
                 />
         </div>

@@ -1,12 +1,22 @@
 import "./MainTable.scss";
 import "../BoxMedium/BoxMedium.scss";
+import "../../interface.tsx";
 import testData from '../../data';
 import { Link } from "react-router-dom";
+import idata from "../../interface";
 
+import { usePhoneContext } from "../../PhoneContext";
 
 const MainTable = () => {
 
-  const dataPhone = JSON.parse(testData) as { _id: number; title: string; price: number }[];
+  const dataPhone = JSON.parse(testData) as idata[];
+
+
+  const { setPhoneData } = usePhoneContext(); // ดึงฟังก์ชัน setPhoneData จาก Context
+
+  const handleEditClick = (title: string, price: number) => {
+    setPhoneData({ title, price }); // เก็บข้อมูล item ลงใน Context
+  };
 
 
   return (
@@ -17,7 +27,7 @@ const MainTable = () => {
           <div className="price">{item.price}</div>
           <div className="over-button">
             
-            <Link to="/add-new-phone" className="button-edit" state={{ title: item.title, price: item.price }}>Edit</Link>
+            <Link to="/add-new-phone" className="button-edit" onClick={() => handleEditClick(item.title, item.price)}>Edit</Link>
             <Link to="" className="button-buy">Buy</Link>
             
           </div>

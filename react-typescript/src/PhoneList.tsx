@@ -7,7 +7,7 @@ import MainTable from './component/MainTable/MainTable';
 import FinalRowContain from './component/FinalRowContain/FinalRowContain';
 
 
-function App() {
+function PhoneList() {
   return (
     <div className="flex-container">
       <Head />
@@ -27,4 +27,4 @@ function App() {
 }
 
 
-export default App;
+export default PhoneList;
