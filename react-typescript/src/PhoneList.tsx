@@ -6,24 +6,23 @@ import BoxMedium from './component/BoxMedium/BoxMedium';
 import MainTable from './component/MainTable/MainTable';
 import FinalRowContain from './component/FinalRowContain/FinalRowContain';
 
-
 function PhoneList() {
   return (
     <div className="flex-container">
-      <Head />
-      <div className="main-content">
-        <SideBar/>
-        <div className="content">
-            <div className="containerin"> 
-            <FirstRowContain/>
-            <BoxMedium/>
-            <MainTable/> 
-            <FinalRowContain/> 
-          </div>        
+        <Head />
+        <div className="main-content">
+          <SideBar/>
+          <div className="content">
+              <div className="containerin"> 
+              <FirstRowContain/>
+              <BoxMedium/>
+              <MainTable/> 
+              <FinalRowContain/> 
+            </div>        
+          </div>
         </div>
-      </div>
     </div>
-  );
+);
 }
 
 

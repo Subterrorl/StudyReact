@@ -1,4 +1,3 @@
-import './App.scss';
 import Head from './component/Head/Head';
 import SideBarShoppingCart from './component/SideBarShoppingCart/SideBarShoppingCart';
 import FirstRowContainShoppingCart from './component/FirstRowContainShoppingCart/FirstRowContainShoppingCart';

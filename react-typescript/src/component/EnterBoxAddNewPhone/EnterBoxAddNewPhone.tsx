@@ -1,5 +1,4 @@
 import "./EnterBoxAddNewPhone.scss";
-import { useLocation } from "react-router-dom";
 import { usePhoneContext } from "../../PhoneContext";
 
 function EnterBoxAddNewPhone() {
@@ -33,7 +32,7 @@ function EnterBoxAddNewPhone() {
                 type="text"
                 className="input-box"
                 id="price"
-                
+                value={phoneData?.price || ""}
                 onChange={handleInputChange}
                 placeholder="Enter phone price"
                 />

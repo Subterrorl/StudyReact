@@ -22,7 +22,7 @@ function App() {
       <Router>
         <Routes>
           {/* กำหนดเส้นทางสำหรับแต่ละหน้า */}
-          <Route path="/" element={<PhoneList />} />
+          <Route path="/" element={<ShoppingCart />} />
           <Route path="/phone-list" element={<PhoneList />} />
           <Route path="/add-new-phone" element={<AddNewPhone />} />
           <Route path="/shopping-cart" element={<ShoppingCart />} />

@@ -5,3 +5,4 @@ interface idata{
 }
 
 export default idata;
+

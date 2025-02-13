@@ -12,7 +12,7 @@ const PhoneContext = createContext<{
 } | null>(null);
 
 export const PhoneProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [phoneData, setPhoneData] = useState<PhoneData>({ title: '', price: 0 }); // ตั้งค่าเริ่มต้น
+  const [phoneData, setPhoneData] = useState<PhoneData>({ title: '', price: 0 });
 
   return (
     <PhoneContext.Provider value={{ phoneData, setPhoneData }}>
