@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.scss';
@@ -9,17 +8,12 @@ import { PhoneProvider } from './PhoneContext';
 
 
 function App() {
-  const theme = 'dark';
-  const [counter, setCounter] = useState(10);
-
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-
 
 
   return (
     <PhoneProvider>
       <Router>
+
         <Routes>
           {/* กำหนดเส้นทางสำหรับแต่ละหน้า */}
           <Route path="/" element={<ShoppingCart />} />
@@ -31,6 +25,5 @@ function App() {
     </PhoneProvider>
   );
 }
-
 
 export default App;

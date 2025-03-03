@@ -1,16 +1,22 @@
+import React from "react";
 import "./Head.scss";
-import { useCartContext } from "../../CartContext";
-function Head() {
 
-   const { getTotalQuantity } = useCartContext();
+interface HeadProps {
+  toggleSidebar: () => void;
+}
 
-    return (
+function Head({ toggleSidebar }: HeadProps) {
+  return (
     <div className="head">
-        <div className="head-in"></div>
-        <div className="head-in2"><b>Moblie Phone Shop</b></div>
-        <div className="head-in3">Total Items: {getTotalQuantity()}</div> 
+      <div className="head-in">
+        <div className="button-head-in"><button onClick={toggleSidebar}>กดปุ่ม</button></div>
+      </div>
+      <div className="head-in2">
+        <b>Mobile Phone Shop</b>
+      </div>
+      <div className="head-in3">Total Items: {/* your total quantity logic */}</div>
     </div>
-    );
-  }
+  );
+}
 
-  export default Head;
+export default Head;

@@ -9,12 +9,19 @@ import FinalRowContainAddNewPhone from './component/FinalRowContainAddNewPhone/F
 
 
 function AddNewPhone() {
+    const [isSidebarVisible, setIsSidebarVisible] = useState(false); // สร้าง state สำหรับควบคุมการแสดงผลของ sidebar
+
+    // ฟังก์ชันเพื่อ toggle สถานะของ sidebar
+    const toggleSidebar = () => {
+      setIsSidebarVisible((prev) => !prev);
+    };
   return (
+    
 
     <div className="flex-container">
-        <Head />
+        <Head toggleSidebar={toggleSidebar} /> {/* ส่ง toggleSidebar ไปที่ Head */}
         <div className="main-content">
-            <SideBarAddNewPhone/>
+        <SideBarAddNewPhone isVisible={isSidebarVisible} /> {/* ส่ง isVisible ไปที่ SideBar */}
             <div className="content">
                 <div className="containerin"> 
                     <FirstRowContainAddNewPhone/>

@@ -1,11 +1,23 @@
-.sidebar{
+.sidebar {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 200px;
+    width: 0px;
     background-color: #c1e5f5;
     gap: 15px;
+
+    position: relative; /* ใช้ absolute เพื่อให้มันขยับได้ */
+    left: -200px; /* ซ่อน sidebar ให้อยู่ด้านนอก */
+    top: 0; /* กำหนดตำแหน่งบนสุด */
+    height: 100%;
+    transition: left 0.3s ease; /* การเปลี่ยนแปลงของ left ค่อยๆ เกิดขึ้น */
 }
+
+.sidebar.visible {
+    left: 0;
+    width: 200px;
+}
+
 
 .phone-list-side-bar{
     padding-top: 16px;
