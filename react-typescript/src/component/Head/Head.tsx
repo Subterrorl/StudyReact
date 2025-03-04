@@ -12,7 +12,7 @@ function Head({ toggleSidebar }: HeadProps) {
         <div className="button-head-in"><button onClick={toggleSidebar}>กดปุ่ม</button></div>
       </div>
       <div className="head-in2">
-        <b>Mobile Phone Shop</b>
+        <b>Mobile Phone Shop (React)</b>
       </div>
       <div className="head-in3">Total Items: {/* your total quantity logic */}</div>
     </div>
