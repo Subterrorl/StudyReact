@@ -1,9 +1,10 @@
 import "./MainTable.scss";
 import "../BoxMedium/BoxMedium.scss";
 import "../../interface.tsx";
-import testData from '../../data';
+//import testData from '../../data'; //อาจไม่ใช้
 import idata from "../../interface";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 import { useCartContext } from "../../CartContext";
 import { usePhoneContext } from "../../PhoneContext";
@@ -13,16 +14,47 @@ const MainTable = () => {
   const { updateCart } = useCartContext();
   const { setPhoneData } = usePhoneContext();
 
-  const dataPhone = JSON.parse(testData) as idata[];
+  //const dataPhone = JSON.parse(testData) as idata[]; //อาจไม่ใช้
+
+  const [dataPhone, setDataPhone] = useState<idata[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3002/phonelist")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch phone list");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setDataPhone(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setIsLoading(false);
+      });
+  }, []);
+
+  // แสดงข้อความขณะโหลด
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  // แสดงข้อความเมื่อเกิดข้อผิดพลาด
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   const handleEditClick = (title: string, price: number) => {
-    setPhoneData({ title, price }); // เก็บข้อมูล item ลงใน Context
+    setPhoneData({ title, price });
   };
 
   const handleBuyClick = (item: idata) => {
-    updateCart(item); // เพิ่มสินค้าลงตะกร้า
+    updateCart(item);
   };
-
 
   return (
     <div id="mainTable" className="box-large">
