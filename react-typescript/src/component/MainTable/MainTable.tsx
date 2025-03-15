@@ -21,7 +21,7 @@ const MainTable = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3002/phonelist")
+    fetch("http://localhost:3002/phonedata")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch phone list");
@@ -48,6 +48,8 @@ const MainTable = () => {
     return <div>Error: {error}</div>;
   }
 
+
+  
   const handleEditClick = (title: string, price: number) => {
     setPhoneData({ title, price });
   };
