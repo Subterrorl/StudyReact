@@ -8,14 +8,19 @@
     border: 3px solid black;
   }
   .phone-name-header{
-    width: 65%;
+    width: 27%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+  .type{
+    width: 35%;
     display: flex;
     align-items: center;
     padding-left: 20px;
   }
   .price{
-    width: 24%;
+    width: 21%;
     display: flex;
     align-items: center;
-
   }

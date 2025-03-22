@@ -42,7 +42,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   };
 
-  // ฟังก์ชันล้างตะกร้าสินค้า
   const clearCart = () => {
     setCart([]);
   };

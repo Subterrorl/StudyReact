@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Head.scss";
+import { useCartContext } from "../../CartContext";
 
 interface HeadProps {
   toggleSidebar: () => void;
@@ -7,6 +8,8 @@ interface HeadProps {
 
 function Head({ toggleSidebar }: HeadProps) {
   
+  const { getTotalQuantity , cart } = useCartContext();
+
   const [shopName, setShopName] = useState("Loading...");
 
     useEffect(() => {
@@ -30,7 +33,7 @@ function Head({ toggleSidebar }: HeadProps) {
       <div className="head-in2">
         <b>{shopName}</b>
       </div>
-      <div className="head-in3">Total Items: {/* your total quantity logic */}</div>
+      <div className="head-in3">Total Items: {getTotalQuantity()}</div>
     </div>
   );
 }

@@ -18,17 +18,41 @@
     background-color: #cddbe7;
   }
   .phone-name{
-    width: 65%;
-    display: flex;
+    width: 27%;
+    
     align-items: center;
     padding-left: 20px;
   }
-
+  .type-maintable{
+    width: 35.5%;
+    
+    align-items: center;
+    padding-left: 20px;
+  }
+  .price-maintable{
+    width: 20%;
+    
+    align-items: center;
+  }
   .over-button{
     display: flex;
   }
 
   .button-edit{
+    color: #9e276e;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    border-color: #9e276e;
+    background-color: #f2cfee;
+    width: 60px;
+    height: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+  }
+  .button-delete{
     color: #9e276e;
     border-style: solid;
     border-width: 1px;

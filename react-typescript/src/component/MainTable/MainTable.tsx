@@ -1,5 +1,4 @@
 import "./MainTable.scss";
-import "../BoxMedium/BoxMedium.scss";
 import "../../interface.tsx";
 //import testData from '../../data'; //อาจไม่ใช้
 import idata from "../../interface";
@@ -38,35 +37,61 @@ const MainTable = () => {
       });
   }, []);
 
-  // แสดงข้อความขณะโหลด
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  // แสดงข้อความเมื่อเกิดข้อผิดพลาด
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-
-  
-  const handleEditClick = (title: string, price: number) => {
-    setPhoneData({ title, price });
+  const handleEditClick = (_id: number, title: string, price: number) => {
+    setPhoneData({_id, title, price });
+    console.log("Data to be set in Context:", _id, title, price);
   };
 
   const handleBuyClick = (item: idata) => {
     updateCart(item);
   };
 
+  const handleDeleteClick = (_id: number) => {
+    if (!window.confirm("คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูลนี้?")) {
+      return;
+    }
+  
+    fetch(`http://localhost:3002/deletephonedata/${_id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to delete phone data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        alert(data.message);
+        setDataPhone((prevData) => prevData.filter((item) => item._id !== _id));
+      })
+      .catch((error) => {
+        console.error("Error deleting data:", error);
+        alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+      });
+  };
+  
+  
+
   return (
     <div id="mainTable" className="box-large">
       {dataPhone.map((item) => (
         <div key={item._id} className="phoneList">
           <div className="phone-name">{item.title}</div>
-          <div className="price">{item.price}</div>
+          <div className="type-maintable">{item.typename}</div>
+          <div className="price-maintable">{item.price}</div>
           <div className="over-button">
             
-            <Link to="/add-new-phone" className="button-edit" onClick={() => handleEditClick(item.title, item.price)}>Edit</Link>
+            <Link to="/add-new-phone" className="button-edit" onClick={() => handleEditClick(item._id,item.title, item.price)}>Edit</Link>
+            <Link to="#" className="button-delete" onClick={() => handleDeleteClick(item._id)}>Delete</Link>
             <Link to="" className="button-buy" onClick={() => handleBuyClick(item)}>Buy</Link>
             
           </div>

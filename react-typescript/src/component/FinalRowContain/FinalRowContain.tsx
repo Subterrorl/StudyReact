@@ -4,7 +4,7 @@ function FinalRowContain() {
     return (
     <div className="row"> 
         <div className="sectionPhoneList"></div> 
-        <a href="addnewphone.html" className="sectionNew">New</a> 
+        <a href="/add-new-phone" className="sectionNew">New</a> 
     </div> 
     );
   }
