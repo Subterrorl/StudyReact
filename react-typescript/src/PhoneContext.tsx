@@ -5,6 +5,7 @@ type PhoneData = {
   _id: number;
   title: string;
   price: number; 
+  item_type_id: number | "";
 };
 
 const PhoneContext = createContext<{
@@ -13,7 +14,7 @@ const PhoneContext = createContext<{
 } | null>(null);
 
 export const PhoneProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [phoneData, setPhoneData] = useState<PhoneData>({ _id: 0, title: '', price: 0 });
+  const [phoneData, setPhoneData] = useState<PhoneData>({ _id: 0, title: '', price: 0 ,item_type_id: "",});
 
   return (
     <PhoneContext.Provider value={{ phoneData, setPhoneData }}>

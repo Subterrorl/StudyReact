@@ -1,33 +1,32 @@
 import "./EnterBoxAddNewPhone.scss";
 import { usePhoneContext } from "../../PhoneContext";
+import { useEffect, useState } from "react";
 
 function EnterBoxAddNewPhone() {
-
     const { phoneData, setPhoneData } = usePhoneContext();
-    console.log("Current phoneData from Context:", phoneData);
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const [itemTypes, setItemTypes] = useState<{ id: number; typename: string }[]>([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3002/get-itemtypes")
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("Item types:", data);
+              setItemTypes(data);
+            })
+            .catch((error) => console.error("Error fetching item types:", error));
+        }, []);
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { id, value } = e.target;
         setPhoneData((prevData) => ({
             ...prevData,
             [id]: value,
-          }));
+        }));
     };
     
     return (
     <div className="box-large-page2">
-        {/* 
-        <div className="box-medium-page2">
-            <div className="input-text">ID</div>
-            <input
-            type="text"
-            className="input-box"
-            id="_id"
-            value={phoneData?._id || ""}
-            onChange={handleInputChange}
-            placeholder="Enter phone id"
-            />
-        </div>
-        */}   
+          
         <div className="box-medium-page2">
             <div className="input-text">Name</div>
             <input
@@ -50,10 +49,29 @@ function EnterBoxAddNewPhone() {
                 placeholder="Enter phone price"
                 />
         </div>
-        
+
+        <div className="box-medium-page2">
+            <div className="input-text">Type</div>
+            <select id="item_type_id" 
+                    onChange={handleInputChange} 
+                    value={phoneData?.item_type_id || ""}
+                    >
+                <option>Select a type</option>
+                {itemTypes.map((item) => (
+                    <option key={item.id} 
+                            value={item.id}>
+                            {item.typename}
+                    </option>
+                ))}
+            </select>
+        </div>
     </div> 
     );
   }
 
   export default EnterBoxAddNewPhone;
-  //ปุ่ม edit sidebar เปิดตลอด alert ข้อความ type item
+  //left join
+  //inner join
+  //sidebar เป็น state จำค่าเปิดปิด
+  //ทำตัวที่คล้ายๆ alart
+  //ทำให้กด save แล้วจำ id ด้วยเพื่อให้ไม่เซฟซ้ำ

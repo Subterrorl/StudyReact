@@ -47,7 +47,7 @@ const MainTable = () => {
   }
 
   const handleEditClick = (_id: number, title: string, price: number) => {
-    setPhoneData({_id, title, price });
+    setPhoneData({_id, title, price ,item_type_id: ""});
     console.log("Data to be set in Context:", _id, title, price);
   };
 
@@ -79,25 +79,33 @@ const MainTable = () => {
       });
   };
   
-  
 
   return (
     <div id="mainTable" className="box-large">
-      {dataPhone.map((item) => (
-        <div key={item._id} className="phoneList">
-          <div className="phone-name">{item.title}</div>
-          <div className="type-maintable">{item.typename}</div>
-          <div className="price-maintable">{item.price}</div>
-          <div className="over-button">
-            
-            <Link to="/add-new-phone" className="button-edit" onClick={() => handleEditClick(item._id,item.title, item.price)}>Edit</Link>
-            <Link to="#" className="button-delete" onClick={() => handleDeleteClick(item._id)}>Delete</Link>
-            <Link to="" className="button-buy" onClick={() => handleBuyClick(item)}>Buy</Link>
-            
+      {dataPhone.map((item) => {
+        const discountedPrice = item.price - (item.price * item.discount) / 100;
+
+        return (
+          <div key={item._id} className="phoneList">
+            <div className="phone-name">{item.title}</div>
+            <div className="type-maintable">{item.typename}</div>
+            <div className="price-maintable">
+              <span className ="normal-price">{item.price.toLocaleString()}</span>
+              <span className ="discount-price">{discountedPrice.toLocaleString()}</span>
+            </div>
+            <div className="over-button">
+              <Link to="/add-new-phone" className="button-edit" onClick={() => handleEditClick(item._id, item.title, item.price)}>Edit</Link>
+              <Link to="#" className="button-delete" onClick={() => handleDeleteClick(item._id)}>Delete</Link>
+              <Link to="" className="button-buy" onClick={() => handleBuyClick(item)}>Buy</Link>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
+      <div className="pop-up" id="pop-up-content">
+        <div id="message">sucess</div>
+      </div>
     </div>
+    
   );
 };
 

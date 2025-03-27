@@ -34,6 +34,13 @@
     
     align-items: center;
   }
+  .normal-price{
+    margin-right:8px ;
+    text-decoration: line-through;
+  }
+  .discount-price{
+    color: red;
+  }
   .over-button{
     display: flex;
   }
@@ -83,4 +90,14 @@
   button:hover{
     background-color: #c0a9be;
   }
-  
+  .pop-up{
+    position: absolute;
+    top: 50px;
+    left: 40%;
+    background-color: green;
+    width: 500px;
+    height: 210px;
+    border-radius: 8px;
+    padding: 15px;
+    display: block;
+  }
