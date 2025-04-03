@@ -5,19 +5,16 @@ import FirstRowContainShoppingCart from './component/FirstRowContainShoppingCart
 import FinalRowContainShoppingCart from './component/FinalRowContainShoppingCart/FinalRowContainShoppingCart';
 import TopTotalBox from './component/TopTotalBox/TopTotalBox';
 import TotalBox from './component/TotalBox/TotalBox';
-
+import { useSidebar } from "./SidebarContext";
 
 
 function ShoppingCart() {
-    const [isSidebarVisible, setIsSidebarVisible] = useState(false); // สร้าง state สำหรับควบคุมการแสดงผลของ sidebar
-    const toggleSidebar = () => {
-        setIsSidebarVisible((prev) => !prev);
-      };
+  const { isSidebarVisible } = useSidebar();
 
   return (
 
     <div className="flex-container">
-        <Head toggleSidebar={toggleSidebar} /> {/* ส่ง toggleSidebar ไปที่ Head */}
+        <Head  /> {/* ส่ง toggleSidebar ไปที่ Head */}
         <div className="main-content">
         <SideBarShoppingCart isVisible={isSidebarVisible} /> {/* ส่ง isVisible ไปที่ SideBar */}
             <div className="content">

@@ -41,7 +41,7 @@ function EnterBoxAddNewPhone() {
         <div className="box-medium-page2">
             <div className="input-text">Price</div>
             <input
-                type="text"
+                type="number"
                 className="input-box"
                 id="price"
                 value={phoneData?.price || ""}
@@ -52,15 +52,15 @@ function EnterBoxAddNewPhone() {
 
         <div className="box-medium-page2">
             <div className="input-text">Type</div>
-            <select id="item_type_id" 
-                    onChange={handleInputChange} 
-                    value={phoneData?.item_type_id || ""}
-                    >
-                <option>Select a type</option>
+            <select
+                id="item_type_id"
+                onChange={handleInputChange}
+                value={phoneData?.item_type_id || ""}
+            >
+                <option value="">Select a type</option> {/* ให้ option แรกเป็น default */}
                 {itemTypes.map((item) => (
-                    <option key={item.id} 
-                            value={item.id}>
-                            {item.typename}
+                    <option key={item.id} value={item.id}>
+                    {item.typename}
                     </option>
                 ))}
             </select>
@@ -72,6 +72,5 @@ function EnterBoxAddNewPhone() {
   export default EnterBoxAddNewPhone;
   //left join
   //inner join
-  //sidebar เป็น state จำค่าเปิดปิด
-  //ทำตัวที่คล้ายๆ alart
-  //ทำให้กด save แล้วจำ id ด้วยเพื่อให้ไม่เซฟซ้ำ
+  //databas เช็ค ชื่อ กับ type
+  //dropdown type ไม่หายไป

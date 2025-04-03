@@ -4,6 +4,7 @@ interface idata{
     price: number;
     typename: string;
     discount: number;
+    item_type_id:number;
 }
 
 export default idata;

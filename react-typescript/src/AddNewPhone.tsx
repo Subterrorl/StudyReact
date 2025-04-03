@@ -5,22 +5,20 @@ import SideBarAddNewPhone from './component/SideBarAddNewPhone/SideBarAddNewPhon
 import FirstRowContainAddNewPhone from './component/FirstRowContainAddNewPhone/FirstRowContainAddNewPhone';
 import EnterBoxAddNewPhone from './component/EnterBoxAddNewPhone/EnterBoxAddNewPhone';
 import FinalRowContainAddNewPhone from './component/FinalRowContainAddNewPhone/FinalRowContainAddNewPhone';
-
+import { useSidebar } from "./SidebarContext";
 
 
 function AddNewPhone() {
-    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const { isSidebarVisible } = useSidebar();
 
-    const toggleSidebar = () => {
-      setIsSidebarVisible((prev) => !prev);
-    };
+    
   return (
     
 
     <div className="flex-container">
-        <Head toggleSidebar={toggleSidebar} /> {/* ส่ง toggleSidebar ไปที่ Head */}
+        <Head />
         <div className="main-content">
-        <SideBarAddNewPhone isVisible={isSidebarVisible} /> {/* ส่ง isVisible ไปที่ SideBar */}
+        <SideBarAddNewPhone isVisible={isSidebarVisible} />
             <div className="content">
                 <div className="containerin"> 
                     <FirstRowContainAddNewPhone/>

@@ -1,10 +1,11 @@
 import "./FinalRowContain.scss";
 import "../FirstRowContain/FirstRowContain.scss";
+import { Link } from "react-router-dom";
 function FinalRowContain() {
     return (
     <div className="row"> 
         <div className="sectionPhoneList"></div> 
-        <a href="/add-new-phone" className="sectionNew">New</a> 
+        <Link to="/add-new-phone" className="sectionNew">New</Link>
     </div> 
     );
   }

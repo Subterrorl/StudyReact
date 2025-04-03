@@ -46,9 +46,9 @@ const MainTable = () => {
     return <div>Error: {error}</div>;
   }
 
-  const handleEditClick = (_id: number, title: string, price: number) => {
-    setPhoneData({_id, title, price ,item_type_id: ""});
-    console.log("Data to be set in Context:", _id, title, price);
+  const handleEditClick = (_id: number, title: string, price: number,item_type_id:number) => {
+    setPhoneData({_id, title, price ,item_type_id});
+    console.log("Data to be set in Context:", _id, title, price,item_type_id);
   };
 
   const handleBuyClick = (item: idata) => {
@@ -94,16 +94,14 @@ const MainTable = () => {
               <span className ="discount-price">{discountedPrice.toLocaleString()}</span>
             </div>
             <div className="over-button">
-              <Link to="/add-new-phone" className="button-edit" onClick={() => handleEditClick(item._id, item.title, item.price)}>Edit</Link>
+              <Link to="/add-new-phone" className="button-edit" onClick={() => handleEditClick(item._id, item.title, item.price,item.item_type_id)}>Edit</Link>
               <Link to="#" className="button-delete" onClick={() => handleDeleteClick(item._id)}>Delete</Link>
               <Link to="" className="button-buy" onClick={() => handleBuyClick(item)}>Buy</Link>
             </div>
           </div>
         );
       })}
-      <div className="pop-up" id="pop-up-content">
-        <div id="message">sucess</div>
-      </div>
+      
     </div>
     
   );

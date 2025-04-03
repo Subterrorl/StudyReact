@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Head.scss";
 import { useCartContext } from "../../CartContext";
+import { useSidebar } from "../../SidebarContext";
 
-interface HeadProps {
-  toggleSidebar: () => void;
-}
 
-function Head({ toggleSidebar }: HeadProps) {
+function Head() {
+  const { toggleSidebar } = useSidebar();
   
   const { getTotalQuantity , cart } = useCartContext();
 
